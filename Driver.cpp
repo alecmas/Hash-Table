@@ -14,8 +14,6 @@ int main() {
 	Hash hashy;
 	int input = 0;
 
-	
-
 	cout << "Welcome to the basic Hash Table!" << endl;
 	cout << "Here is a list of available options: " << endl;
 	cout << endl;
