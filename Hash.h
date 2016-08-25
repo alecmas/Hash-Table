@@ -37,8 +37,6 @@ public:
 	void findDrink(string name);
 	void removeItem(string name);
 
-
-
 };
 
 #endif
