@@ -9,19 +9,17 @@
 
 using namespace std;
 
+// constructor populates hash table and sets all values to "empty"
 Hash::Hash() {
-
 	for (int i = 0; i < tableSize; i++) {
-
 		HashTable[i] = new item;
 		HashTable[i]->name = "empty";
 		HashTable[i]->drink = "empty";
 		HashTable[i]->next = NULL;
-
 	}
-
 }
 
+// takes a string and generates a hash value
 int Hash::hash(string key) {
 
 	int hash = 0;
@@ -39,6 +37,7 @@ int Hash::hash(string key) {
 
 }
 
+// adds an item to the hash table
 void Hash::addItem(string name, string drink) {
 
 	int index = hash(name);
@@ -68,9 +67,9 @@ void Hash::addItem(string name, string drink) {
 		
 	}
 
-	
 }
 
+// returns the number of items in an index
 int Hash::numberOfItemsInIndex(int index) {
 
 	int count = 0;
@@ -99,6 +98,7 @@ int Hash::numberOfItemsInIndex(int index) {
 
 }
 
+// prints the hash table
 void Hash::printTable() {
 
 	int number;
@@ -126,9 +126,23 @@ void Hash::printTable() {
 
 }
 
+// prints the items contained in an index
 void Hash::printItemsInIndex(int index) {
 
-	item* ptr = HashTable[index];
+	item* ptr = NULL;
+
+	if (index >= tableSize) {
+
+		cout << "Index does not exist" << endl;
+		return;
+
+	}
+
+	else {
+
+		ptr = HashTable[index];
+
+	}
 
 	if (ptr->name == "empty") {
 
@@ -154,6 +168,7 @@ void Hash::printItemsInIndex(int index) {
 
 }
 
+// searches the hash table and prints that person's favorite drink
 void Hash::findDrink(string name) {
 
 	int index = hash(name);
@@ -162,12 +177,20 @@ void Hash::findDrink(string name) {
 
 	item* ptr = HashTable[index];
 
+	if (HashTable[index]->name == name) {
+
+		foundName = true;
+		drink = ptr->drink;
+
+	}
+
 	while (ptr->next != NULL) {
 
 		if(ptr->name == name) {
 
 			foundName = true;
 			drink = ptr->drink;
+			break;					
 
 		}
 
@@ -189,15 +212,15 @@ void Hash::findDrink(string name) {
 
 }
 
+// removes an item fron the hash table
 void Hash::removeItem(string name) {
 
-	int index = hash(name);
+	int index = hash(name);		
 
 	item* delPtr;
 	item* ptr1;
 	item* ptr2;
 
-	// Case 0
 	// bucket is empty
 	if (HashTable[index]->name == "empty" && HashTable[index]->drink == "empty") {
 
@@ -205,7 +228,6 @@ void Hash::removeItem(string name) {
 
 	}
 
-	// Case 1
 	// 1 item contained in bucket and that item has matching name
 	else if (HashTable[index]->name == name && HashTable[index]->next == NULL) {
 
@@ -216,8 +238,7 @@ void Hash::removeItem(string name) {
 
 	}
 
-	// Case 2
-	// match is located in the first item in the bucket but there are more items in the bucket
+	// match is located in the first item of the bucket, but there are more items in the bucket
 	else if (HashTable[index]->name == name) {
 
 		delPtr = HashTable[index];
@@ -228,14 +249,13 @@ void Hash::removeItem(string name) {
 
 	}
 
-	// Case 3
 	// bucket contains items but first item is not a match
 	else {
 
 		ptr1 = HashTable[index]->next;
 		ptr2 = HashTable[index];
 
-		// 3.1 no match
+		// no match for item searched
 		while (ptr1 != NULL && ptr1->name != name) {
 
 			ptr2 = ptr1;
@@ -249,7 +269,7 @@ void Hash::removeItem(string name) {
 
 		}
 
-		// 3.2 match is found
+		// match is found for item searched
 		else {
 
 			delPtr = ptr1;
