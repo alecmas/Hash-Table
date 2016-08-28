@@ -21,36 +21,28 @@ Hash::Hash() {
 
 // takes a string and generates a hash value
 int Hash::hash(string key) {
-
 	int hash = 0;
 	int index;
 
 	for (int i = 0; i < key.length(); i++) {
-
 		hash = hash + (int)key[i];
-
 	}
 
 	index = hash % tableSize;
 
 	return index;
-
 }
 
 // adds an item to the hash table
 void Hash::addItem(string name, string drink) {
-
 	int index = hash(name);
 
 	if (HashTable[index]->name == "empty") {
-
 		HashTable[index]->name = name;
 		HashTable[index]->drink = drink;
-
 	}
 
 	else {
-
 		item* ptr = HashTable[index];
 		item* n = new item;
 		n->name = name;
@@ -58,49 +50,36 @@ void Hash::addItem(string name, string drink) {
 		n->next = NULL;
 
 		while (ptr->next != NULL) {
-
 			ptr = ptr->next;
-
 		}
 
 		ptr->next = n;
-		
 	}
-
 }
 
 // returns the number of items in an index
 int Hash::numberOfItemsInIndex(int index) {
-
 	int count = 0;
 
 	if (HashTable[index]->name == "empty") {
-
 		return count;
-
 	}
 
 	else {
-
 		count++;
 		item* ptr = HashTable[index];
 
 		while (ptr->next != NULL) {
-
 			count++;
 			ptr = ptr->next;
-
 		}
-
+		
 		return count;
-
 	}
-
 }
 
 // prints the hash table
 void Hash::printTable() {
-
 	int number;
 	int count;
 
