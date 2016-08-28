@@ -11,26 +11,21 @@ using namespace std;
 #define HASH_H
 
 class Hash {
-
 private: 
-
 	// static table size initialized
 	static const int tableSize = 4;
 
 	// each item struct has a name and a drink, as well as a next pointer
 	struct item {
-
 		string name;
 		string drink;
 		item* next;
-
 	};
 
 	// initialize table of item pointers
 	item* HashTable[tableSize];
 
 public:
-
 	// constructor populates hash table and sets all values to "empty"
 	Hash();
 
@@ -54,7 +49,6 @@ public:
 
 	// removes an item fron the hash table
 	void removeItem(string name);
-
 };
 
 #endif

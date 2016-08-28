@@ -10,7 +10,6 @@
 using namespace std;
 
 int main() {
-
 	Hash hashy;
 
 	hashy.addItem("Alec", "Milk");
@@ -34,20 +33,15 @@ int main() {
 	int input = 0;
 
 	while (input != 6) {
-
 		cout << "Command: ";
 		cin >> input;						
 
 		if (input == 1) {
-
 			cout << endl;
 			hashy.printTable();
 			cout << endl;
-			
 		}
-
 		else if (input == 2) {
-
 			int index = 0;
 
 			cout << endl;
@@ -58,11 +52,8 @@ int main() {
 
 			hashy.printItemsInIndex(index);
 			cout << endl;
-
 		}
-
 		else if (input == 3) {
-
 			string newName;
 			string newDrink;
 
@@ -77,11 +68,8 @@ int main() {
 			hashy.addItem(newName, newDrink);
 			cout << "Entry added!" << endl;
 			cout << endl;
-
 		}
-
 		else if (input == 4) {
-
 			string removeName;
 
 			cout << endl;
@@ -91,11 +79,8 @@ int main() {
 			cout << endl;
 			hashy.removeItem(removeName);
 			cout << endl;
-
 		}
-
 		else if (input == 5) {
-
 			string searchName;
 
 			cout << endl;
@@ -105,26 +90,17 @@ int main() {
 			cout << endl;
 			hashy.findDrink(searchName);
 			cout << endl;
-
 		}
-
 		else if (input == 6) {
-
 			cout << endl;
 			cout << "Exiting program..." << endl;
-
 		}
-
 		else {
-
 			cout << endl;
 			cout << "Please enter a valid command number" << endl;
 			cout << endl;
-
 		}
-
 	}
 
 	return 0;
-
 }
