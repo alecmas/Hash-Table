@@ -1,5 +1,5 @@
 # HashTable
-Implementation of a hash table in C++
+Basic implementation of a hash table
 
 Known bugs:
 
